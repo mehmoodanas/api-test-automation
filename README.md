@@ -1,6 +1,6 @@
 # API Test Automation Framework
 
-[![Tests](https://github.com/<your-username>/api-test-automation/actions/workflows/tests.yml/badge.svg)](https://github.com/<your-username>/api-test-automation/actions/workflows/tests.yml)
+[![Tests](https://github.com/mehmoodanas/api-test-automation/actions/workflows/tests.yml/badge.svg)](https://github.com/mehmoodanas/api-test-automation/actions/workflows/tests.yml)
 [![Python](https://img.shields.io/badge/Python-3.13%2B-blue)](https://www.python.org/)
 [![Pytest](https://img.shields.io/badge/Pytest-9.x-brightgreen)](https://pytest.org/)
 [![Playwright](https://img.shields.io/badge/Playwright-1.51-orange)](https://playwright.dev/)
