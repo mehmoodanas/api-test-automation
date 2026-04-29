@@ -1,0 +1,8 @@
+services:
+  tests:
+    build: .
+    container_name: api-test-automation
+    volumes:
+      # Mount the project so report.html lands on the host
+      - .:/app
+    command: pytest -v
