@@ -36,3 +36,7 @@ dist/
 
 # Logs
 *.log
+
+# Java build artefacts
+java-tests/target/
+*.class

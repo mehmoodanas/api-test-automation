@@ -8,9 +8,10 @@ on:
   workflow_dispatch: {}  # allow manual runs from the Actions tab
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
 
+  python-tests:
+    name: Python (Pytest + Playwright)
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -29,7 +30,7 @@ jobs:
       - name: Install Playwright browsers
         run: playwright install --with-deps chromium
 
-      - name: Run tests
+      - name: Run Pytest suite (API + UI)
         run: pytest -v
 
       - name: Upload HTML test report
@@ -38,3 +39,28 @@ jobs:
         with:
           name: pytest-html-report
           path: report.html
+
+  java-tests:
+    name: Java (RestAssured + JUnit 5)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+
+      - name: Run Maven tests
+        working-directory: java-tests
+        run: mvn -B test
+
+      - name: Upload Surefire reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: surefire-reports
+          path: java-tests/target/surefire-reports/

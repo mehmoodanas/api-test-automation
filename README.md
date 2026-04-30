@@ -116,3 +116,29 @@ The HTML report is written to `report.html` on the host (via the bind mount).
 ---
 
 Built by Anas Mehmood as part of preparing for a test-automation internship.
+
+---
+
+## Java + RestAssured layer (bonus)
+
+A parallel Java/RestAssured test suite under [`java-tests/`](java-tests/) mirrors
+the Python tests against the same API. This proves the framework works in a
+**unified Java + Python stack** — directly relevant to QA roles that require
+both languages.
+
+### Run the Java tests
+
+```bash
+cd java-tests
+mvn test
+```
+
+Requires Java 21+ and Maven. RestAssured + JUnit 5 are pulled in via Maven on first run.
+
+### What it covers
+
+- `GET /posts/1` returns 200
+- Response shape contains `id`, `title`, `body`, `userId`
+- Parametrized GET over IDs 1–5
+- Negative test: `GET /posts/9999` → 404
+- `POST /posts` creates a resource and the API echoes the data back
