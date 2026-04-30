@@ -1,0 +1,39 @@
+[
+  {
+    "name": "Schema validation failures",
+    "messageRegex": ".*ValidationError.*",
+    "matchedStatuses": ["failed"]
+  },
+  {
+    "name": "Authentication / authorization failures",
+    "messageRegex": ".*(401|403|Unauthorized|Forbidden).*",
+    "matchedStatuses": ["failed"]
+  },
+  {
+    "name": "HTTP status mismatches",
+    "messageRegex": ".*assert \\d+ == \\d+.*",
+    "matchedStatuses": ["failed"]
+  },
+  {
+    "name": "Performance threshold breached",
+    "messageRegex": ".*total_seconds.*",
+    "matchedStatuses": ["failed"]
+  },
+  {
+    "name": "Network or timeout errors",
+    "messageRegex": ".*(ConnectionError|Timeout|ReadTimeout|MaxRetryError).*",
+    "matchedStatuses": ["broken"]
+  },
+  {
+    "name": "Test infrastructure issues",
+    "matchedStatuses": ["broken"]
+  },
+  {
+    "name": "Skipped tests",
+    "matchedStatuses": ["skipped"]
+  },
+  {
+    "name": "Product defects",
+    "matchedStatuses": ["failed"]
+  }
+]
