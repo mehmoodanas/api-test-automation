@@ -21,13 +21,13 @@ ALLURE_RESULTS_DIR = Path("allure-results")
 ALLURE_META_DIR = Path("allure")
 
 
-def pytest_configure(config):
+def pytest_sessionstart(session):
     """
     Drop static metadata (environment.properties, categories.json) and a
     dynamic executor.json into allure-results/ so the Allure dashboard's
     Environment, Categories, and Executors panels are populated.
 
-    Runs once at session start, before any tests collect.
+    Runs once at session start, AFTER allure-pytest has cleaned the dir.
     """
     ALLURE_RESULTS_DIR.mkdir(exist_ok=True)
 
