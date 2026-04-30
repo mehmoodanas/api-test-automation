@@ -142,3 +142,37 @@ Requires Java 21+ and Maven. RestAssured + JUnit 5 are pulled in via Maven on fi
 - Parametrized GET over IDs 1–5
 - Negative test: `GET /posts/9999` → 404
 - `POST /posts` creates a resource and the API echoes the data back
+
+---
+
+## Performance & load testing (Locust)
+
+Every API test asserts a **response-time threshold** (2 seconds) alongside its
+status-code check. A separate Locust suite under [`performance/`](performance/)
+runs heavier load scenarios: simulating multiple concurrent users hitting the
+API, measuring throughput and percentile latency.
+
+### Run the load test interactively
+
+```bash
+locust -f performance/locustfile.py --host https://jsonplaceholder.typicode.com
+```
+
+Open `http://localhost:8089`, set users + spawn-rate, click **Start swarming**,
+and watch real-time charts of requests-per-second, response times, and failures.
+
+### Run a headless smoke load test (same as CI)
+
+```bash
+locust -f performance/locustfile.py \
+    --host https://jsonplaceholder.typicode.com \
+    --users 5 --spawn-rate 1 --run-time 20s --headless
+```
+
+### What the suite covers
+
+- **GET /posts/{id}** (weight 5 — most common)
+- **GET /posts** (weight 3 — list)
+- **POST /posts** (weight 1 — least common)
+
+The mix is realistic — most users *read* far more than they *create*.

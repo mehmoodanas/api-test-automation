@@ -40,3 +40,7 @@ dist/
 # Java build artefacts
 java-tests/target/
 *.class
+
+# Locust output
+locust-report.html
+locust-stats*.csv
