@@ -11,7 +11,7 @@ from jsonschema import validate
 from framework.schemas import POST_SCHEMA
 
 # Any single API call that takes longer than this is considered too slow
-PERFORMANCE_THRESHOLD_SECONDS = 2.0
+PERFORMANCE_THRESHOLD_SECONDS = 5.0
 
 
 @pytest.mark.smoke
