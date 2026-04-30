@@ -44,3 +44,8 @@ java-tests/target/
 # Locust output
 locust-report.html
 locust-stats*.csv
+
+# Allure
+allure-results/
+allure-history/
+.allure/
