@@ -187,3 +187,27 @@ locust -f performance/locustfile.py \
 - **POST /posts** (weight 1 — least common)
 
 The mix is realistic — most users *read* far more than they *create*.
+
+
+---
+
+## Restful Booker layer (production-style API)
+
+Beyond JSONPlaceholder, the suite also tests
+[Restful Booker](https://restful-booker.herokuapp.com/) — a real, hosted booking
+API that mirrors what production services look like:
+
+- **Token-based authentication** (`POST /auth` returns a token used as a cookie)
+- **Full CRUD** on `/booking` with validation
+- **Realistic latency** from a hosted service
+- **Real persistence** — create-then-read patterns are verifiable
+
+### Test breakdown ([`tests/test_bookings.py`](tests/test_bookings.py))
+
+- **Auth (2):** valid login returns a token; invalid login returns "Bad credentials"
+- **Read (4):** list bookings, filter by lastname, get specific booking, 404 for missing
+- **Create (2):** create + echo, then retrieve by id
+- **Update (3):** PUT with token, PUT without token (403), PATCH partial update
+- **Delete (3):** DELETE with token, DELETE without token (403), verify deletion via GET
+
+Total: **14 additional tests** spanning happy paths, negative paths, and end-to-end persistence flows.
