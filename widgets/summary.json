@@ -1,1 +1,1 @@
-{"reportName":"Live Allure dashboard","testRuns":[],"statistic":{"failed":0,"broken":0,"skipped":0,"passed":27,"unknown":0,"total":27},"time":{"start":1777979812943,"stop":1777979820617,"duration":7674,"minDuration":60,"maxDuration":597,"sumDuration":5299}}
+{"reportName":"Live Allure dashboard","testRuns":[],"statistic":{"failed":0,"broken":0,"skipped":0,"passed":27,"unknown":0,"total":27},"time":{"start":1777980819256,"stop":1777980824083,"duration":4827,"minDuration":35,"maxDuration":458,"sumDuration":2341}}
