@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 450" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+  <defs>
+    <style>
+      .bg { fill: #0d1117; }
+      .box { fill: #161b22; stroke: #30363d; stroke-width: 1.5; rx: 8; }
+      .box-accent { fill: #1c2330; stroke: #58a6ff; stroke-width: 1.5; rx: 8; }
+      .box-green { fill: #1c2a1f; stroke: #56d364; stroke-width: 1.5; rx: 8; }
+      .box-orange { fill: #2a1f15; stroke: #f78166; stroke-width: 1.5; rx: 8; }
+      .label { fill: #c9d1d9; font-size: 14px; font-weight: 500; }
+      .sub { fill: #8b949e; font-size: 11px; }
+      .title { fill: #f0f6fc; font-size: 15px; font-weight: 600; }
+      .arrow { stroke: #58a6ff; stroke-width: 1.8; fill: none; opacity: 0.7; }
+      .arrowhead { fill: #58a6ff; opacity: 0.7; }
+      .header { fill: #f0f6fc; font-size: 18px; font-weight: 700; }
+      .icon { font-family: monospace; font-size: 16px; }
+    </style>
+    <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <polygon points="0 0, 8 4, 0 8" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="450" class="bg"/>
+
+  <!-- Title -->
+  <text x="600" y="38" text-anchor="middle" class="header">API Test Automation Framework — Architecture</text>
+
+  <!-- 1. CI trigger -->
+  <rect x="40" y="80" width="220" height="64" class="box-accent"/>
+  <text x="55" y="105" class="title">⚡ GitHub Actions</text>
+  <text x="55" y="124" class="sub">runs on push / PR / nightly</text>
+
+  <!-- 2. Docker -->
+  <rect x="40" y="180" width="220" height="64" class="box"/>
+  <text x="55" y="205" class="title">🐳 Docker</text>
+  <text x="55" y="224" class="sub">Playwright Python base image</text>
+
+  <!-- arrow CI → Docker -->
+  <line x1="150" y1="144" x2="150" y2="180" class="arrow" marker-end="url(#arrowhead)"/>
+
+  <!-- 3. Three test layers -->
+  <rect x="320" y="100" width="240" height="80" class="box-green"/>
+  <text x="335" y="125" class="title">🐍 Python — API tests</text>
+  <text x="335" y="145" class="sub">Pytest · requests · jsonschema</text>
+  <text x="335" y="162" class="sub">Markers: smoke / regression / negative</text>
+
+  <rect x="320" y="200" width="240" height="80" class="box-green"/>
+  <text x="335" y="225" class="title">🎭 Python — UI tests</text>
+  <text x="335" y="245" class="sub">Playwright · Page Object Model</text>
+  <text x="335" y="262" class="sub">Login / inventory flows</text>
+
+  <rect x="320" y="300" width="240" height="80" class="box-orange"/>
+  <text x="335" y="325" class="title">☕ Java — RestAssured</text>
+  <text x="335" y="345" class="sub">JUnit 5 · Maven</text>
+  <text x="335" y="362" class="sub">CRUD + parameterised + negative</text>
+
+  <!-- arrows Docker → tests -->
+  <line x1="260" y1="212" x2="320" y2="140" class="arrow" marker-end="url(#arrowhead)"/>
+  <line x1="260" y1="212" x2="320" y2="240" class="arrow" marker-end="url(#arrowhead)"/>
+  <line x1="260" y1="212" x2="320" y2="340" class="arrow" marker-end="url(#arrowhead)"/>
+
+  <!-- 4. Test targets -->
+  <rect x="630" y="100" width="240" height="80" class="box"/>
+  <text x="645" y="125" class="title">JSONPlaceholder</text>
+  <text x="645" y="145" class="sub">REST API · positive + negative</text>
+  <text x="645" y="162" class="sub">Schema-validated responses</text>
+
+  <rect x="630" y="200" width="240" height="80" class="box"/>
+  <text x="645" y="225" class="title">Sauce Demo</text>
+  <text x="645" y="245" class="sub">E2E browser · login flow</text>
+  <text x="645" y="262" class="sub">Cross-browser ready</text>
+
+  <rect x="630" y="300" width="240" height="80" class="box"/>
+  <text x="645" y="325" class="title">Restful Booker</text>
+  <text x="645" y="345" class="sub">Token auth · full CRUD</text>
+  <text x="645" y="362" class="sub">14 production-style tests</text>
+
+  <!-- arrows tests → targets -->
+  <line x1="560" y1="140" x2="630" y2="140" class="arrow" marker-end="url(#arrowhead)"/>
+  <line x1="560" y1="240" x2="630" y2="240" class="arrow" marker-end="url(#arrowhead)"/>
+  <line x1="560" y1="340" x2="630" y2="340" class="arrow" marker-end="url(#arrowhead)"/>
+
+  <!-- 5. Reports -->
+  <rect x="940" y="100" width="220" height="80" class="box-accent"/>
+  <text x="955" y="125" class="title">📊 Allure Dashboard</text>
+  <text x="955" y="145" class="sub">Live on GitHub Pages</text>
+  <text x="955" y="162" class="sub">History · trends · drilldown</text>
+
+  <rect x="940" y="200" width="220" height="80" class="box"/>
+  <text x="955" y="225" class="title">📄 pytest-html</text>
+  <text x="955" y="245" class="sub">Self-contained report</text>
+  <text x="955" y="262" class="sub">CI artifact upload</text>
+
+  <rect x="940" y="300" width="220" height="80" class="box"/>
+  <text x="955" y="325" class="title">⚡ Locust</text>
+  <text x="955" y="345" class="sub">Load + percentile latency</text>
+  <text x="955" y="362" class="sub">5 user, 20s smoke run</text>
+
+  <!-- arrows targets → reports -->
+  <line x1="870" y1="140" x2="940" y2="140" class="arrow" marker-end="url(#arrowhead)"/>
+  <line x1="870" y1="240" x2="940" y2="240" class="arrow" marker-end="url(#arrowhead)"/>
+  <line x1="870" y1="340" x2="940" y2="340" class="arrow" marker-end="url(#arrowhead)"/>
+
+  <!-- Footer caption -->
+  <text x="600" y="430" text-anchor="middle" class="sub">CI → Container → Test layers (Python + Java) → Real public APIs → Live dashboards</text>
+</svg>
