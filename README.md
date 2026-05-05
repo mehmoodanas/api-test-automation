@@ -8,6 +8,10 @@
 [![Java](https://img.shields.io/badge/Java-21-red)](https://www.oracle.com/java/)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
+
+![Architecture](architecture.svg)
+
+
 A two-layer test automation framework demonstrating modern Python QA practices:
 **REST API tests** with `requests` + `jsonschema`, and **end-to-end UI tests**
 with Playwright using the **Page Object Model**. Containerised with Docker and
@@ -18,6 +22,10 @@ validated by GitHub Actions on every push.
 Every push to `main` triggers CI, runs the full suite, and **publishes a live Allure report** to GitHub Pages:
 
 **👉 [View the live dashboard](https://mehmoodanas.github.io/api-test-automation/)**
+
+
+![Allure Dashboard](allure-dashboard.jpeg)
+
 
 The dashboard is interactive — drill into individual tests, see history across runs, view failures with stack traces, and inspect timing trends.
 
